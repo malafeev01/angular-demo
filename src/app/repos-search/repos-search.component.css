@@ -1,0 +1,33 @@
+.search_input {
+    margin-bottom: 15px;
+}
+
+.search_container {
+    width: 600px;
+    height: 700px;
+    align-self: center;
+    overflow-y: auto;
+}
+
+.search_header {
+    align-self: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: 200;
+
+}
+
+.ant-list-item:hover {
+    background-color: rgb(247, 247, 247);
+    cursor: pointer;
+}
+
+.nocontent_icon {
+    font-size: 40px;
+}
+
+.nocontent_text{
+    color: gray;
+    margin-bottom: 15px;
+}

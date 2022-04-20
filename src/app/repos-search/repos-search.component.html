@@ -1,0 +1,43 @@
+<div ngClass="search_header">
+    GitHub Repository Search
+</div>
+
+<div ngClass="search_container">
+
+    <nz-input-group ngClass="search_input" [nzSuffix]="suffixIconSearch">
+        <input nz-input (input)="onSearchInput($event);" (keyup.enter)="onSearchEnter($event)" placeholder="Type repo name here..."/>
+      </nz-input-group>
+      <ng-template #suffixIconSearch>
+        <i nz-icon nzType="search"></i>
+      </ng-template>
+
+    <nz-list [nzBordered]="true" [nzLoading]="reposLoading" [nzSize]="'small'">
+        <nz-list-item *ngFor="let repo of searchResult" (click)="goToLink(repo.html_url)">
+            <div>{{repo.name}}</div>
+            <div> <i nz-icon nzType="star" nzTheme="outline"></i> {{repo.stargazers_count}}</div>
+        </nz-list-item>
+
+        <nz-list-empty [nzNoResult]="noResult"></nz-list-empty>
+
+    </nz-list>
+
+    <ng-template #noResult>
+        <div *ngIf="searchDone && searchResult.length === 0 && !searchError.status">
+            <div ngClass="nocontent_icon"><i nz-icon nzType="meh" nzTheme="outline"></i></div>
+            <div ngClass="nocontent_text">There is no GitHub repository with <i>{{searchValue}}</i> name</div>
+            
+        </div>
+        <div *ngIf="!searchDone && searchResult.length === 0 && !searchError.status">
+            <div ngClass="nocontent_icon"><i nz-icon nzType="smile" nzTheme="outline"></i></div>
+            <div ngClass="nocontent_text">Please use input field for searching GitHub repositories. Type repository name and press enter or wait for 2 seconds</div>
+        </div>
+        <div *ngIf="searchError.status && searchResult.length === 0">
+            <div ngClass="nocontent_icon"><i nz-icon nzType="frown" nzTheme="outline"></i></div>
+            <div ngClass="nocontent_text">Unexpected error appears during searching GitHub repositories</div>
+            <div ngClass="nocontent_text">
+                <b>Message:</b> {{searchError.message}}
+            </div>
+        </div>
+    </ng-template>
+
+</div>

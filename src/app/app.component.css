@@ -1,0 +1,29 @@
+.root_container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.ant-layout {
+    height: 100%;
+    background-color: white;
+}
+
+nz-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: center;
+    color: gray;
+}
+
+nz-footer i {
+    margin-right: 10px;
+}
+nz-footer a {
+    color: gray;
+}
+nz-footer i:hover {
+    cursor: pointer;
+    color: black;
+}
